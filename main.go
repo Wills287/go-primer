@@ -36,7 +36,8 @@ func main() {
 	// maps()
 	// structs()
 	// functions()
-	loops()
+	// loops()
+	conditionals()
 }
 
 func variables() {
@@ -213,5 +214,23 @@ func loops() {
 	}
 	for _, v := range aMap {
 		fmt.Println(v)
+	}
+}
+
+func conditionals() {
+	// panic("Something happened")
+
+	u1 := user{ID: 1}
+	u2 := user{ID: 2}
+	if u1.ID == u2.ID {
+		fmt.Println("Same user")
+	}
+
+	if u1 == u2 {
+		fmt.Println("Same user")
+	} else if u1.FirstName == u2.FirstName {
+		fmt.Println("Similar")
+	} else {
+		fmt.Println("Else different")
 	}
 }
