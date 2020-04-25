@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 const (
 	first  = iota + 6
@@ -31,7 +34,8 @@ func main() {
 	// arrays()
 	// slices()
 	// maps()
-	structs()
+	// structs()
+	functions()
 }
 
 func variables() {
@@ -151,4 +155,25 @@ func structs() {
 		},
 	}
 	fmt.Println(tidy)
+}
+
+func functions() {
+	fmt.Println(add(2, 3))
+	fmt.Println(explode())
+	one, two := test()
+	fmt.Println(one, two)
+	_, more := test()
+	fmt.Println(more)
+}
+
+func add(one, two int) int {
+	return one + two
+}
+
+func explode() error {
+	return errors.New("Something blew up")
+}
+
+func test() (string, string) {
+	return "One", "Two"
 }
