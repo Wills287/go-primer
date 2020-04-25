@@ -35,7 +35,8 @@ func main() {
 	// slices()
 	// maps()
 	// structs()
-	functions()
+	// functions()
+	loops()
 }
 
 func variables() {
@@ -176,4 +177,41 @@ func explode() error {
 
 func test() (string, string) {
 	return "One", "Two"
+}
+
+func loops() {
+	for i := 0; i < 5; i++ {
+		if i == 3 {
+			break
+		}
+		if i == 1 {
+			continue
+		}
+		fmt.Println(i)
+	}
+
+	var i int
+	for {
+		if i == 5 {
+			break
+		}
+		fmt.Println(i)
+		i++
+	}
+
+	slice := []int{1, 2, 3}
+	for i, v := range slice {
+		fmt.Println(i, v)
+	}
+
+	aMap := map[string]int{"One": 1, "Two": 2}
+	for k, v := range aMap {
+		fmt.Println(k, v)
+	}
+	for k := range aMap {
+		fmt.Println(k)
+	}
+	for _, v := range aMap {
+		fmt.Println(v)
+	}
 }
