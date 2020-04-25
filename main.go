@@ -27,6 +27,10 @@ type user struct {
 	Address   address
 }
 
+type httpRequest struct {
+	Method string
+}
+
 func main() {
 	// variables()
 	// pointers()
@@ -232,5 +236,20 @@ func conditionals() {
 		fmt.Println("Similar")
 	} else {
 		fmt.Println("Else different")
+	}
+
+	r := httpRequest{Method: "GET"}
+	switch r.Method {
+	case "GET":
+		fmt.Println("Getting")
+		fallthrough
+	case "DELETE":
+		fmt.Println("Deleting")
+	case "POST":
+		fmt.Println("Posting")
+	case "PUT":
+		fmt.Println("Putting")
+	default:
+		fmt.Println("Unhandled")
 	}
 }
