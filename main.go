@@ -258,7 +258,7 @@ func conditionals() {
 }
 
 func complexTypes() {
-	p := organization.NewPerson("Test", "Person")
+	p := organization.NewPerson(organization.NewSocialSecurityNumber("123-45-6789"), "Test", "Person")
 	fmt.Printf("%T\n", organization.TwitterHandler("testing"))
 	err := p.SetTwitterHandler("@testy")
 	if err != nil {
