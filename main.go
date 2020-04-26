@@ -33,6 +33,11 @@ type httpRequest struct {
 	Method string
 }
 
+type comparison struct {
+	FirstName string
+	LastName  string
+}
+
 func main() {
 	// variables()
 	// pointers()
@@ -264,7 +269,10 @@ func complexTypes() {
 	if err != nil {
 		fmt.Println("An error occurred")
 	}
-	fmt.Println(p.ID(), p.FullName())
-	fmt.Println(p.Country())
-	fmt.Println(p.TwitterHandler(), p.TwitterHandler().RedirectUrl())
+
+	one := comparison{FirstName: "First", LastName: "Last"}
+	two := comparison{FirstName: "First", LastName: "Last"}
+	if one == two {
+		fmt.Println("Matching")
+	}
 }
