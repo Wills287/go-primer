@@ -6,6 +6,11 @@ import (
 	"strings"
 )
 
+type Citizen interface {
+	Identifiable
+	Country() string
+}
+
 // Type declaration
 type TwitterHandler string
 
@@ -18,12 +23,36 @@ type Identifiable interface {
 
 type socialSecurityNumber string
 
+func NewSocialSecurityNumber(value string) Citizen {
+	return socialSecurityNumber(value)
+}
+
 func (ssn socialSecurityNumber) ID() string {
 	return string(ssn)
 }
 
-func NewSocialSecurityNumber(value string) Identifiable {
-	return socialSecurityNumber(value)
+func (ssn socialSecurityNumber) Country() string {
+	return "USA"
+}
+
+type europeanUnionIdentifier struct {
+	id      string
+	country string
+}
+
+func NewEuropeanUnionIdentifier(id, country string) Citizen {
+	return europeanUnionIdentifier{
+		id:      id,
+		country: country,
+	}
+}
+
+func (eui europeanUnionIdentifier) ID() string {
+	return eui.id
+}
+
+func (eui europeanUnionIdentifier) Country() string {
+	return eui.country
 }
 
 type Name struct {
@@ -40,14 +69,14 @@ type Employee struct {
 }
 
 type Person struct {
-	Identifiable
+	Citizen
 	Name
 	twitterHandler TwitterHandler
 }
 
-func NewPerson(identifiable Identifiable, firstName, lastName string) Person {
+func NewPerson(citizen Citizen, firstName, lastName string) Person {
 	return Person{
-		Identifiable: identifiable,
+		Citizen: citizen,
 		Name: Name{
 			first: firstName,
 			last:  lastName,

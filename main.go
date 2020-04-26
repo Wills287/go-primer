@@ -258,12 +258,13 @@ func conditionals() {
 }
 
 func complexTypes() {
-	p := organization.NewPerson(organization.NewSocialSecurityNumber("123-45-6789"), "Test", "Person")
+	p := organization.NewPerson(organization.NewEuropeanUnionIdentifier("123-45-6789", "Germany"), "Test", "Person")
 	fmt.Printf("%T\n", organization.TwitterHandler("testing"))
 	err := p.SetTwitterHandler("@testy")
 	if err != nil {
 		fmt.Println("An error occurred")
 	}
 	fmt.Println(p.ID(), p.FullName())
+	fmt.Println(p.Country())
 	fmt.Println(p.TwitterHandler(), p.TwitterHandler().RedirectUrl())
 }
