@@ -33,11 +33,6 @@ type httpRequest struct {
 	Method string
 }
 
-type comparison struct {
-	FirstName string
-	LastName  string
-}
-
 func main() {
 	// variables()
 	// pointers()
@@ -270,9 +265,27 @@ func complexTypes() {
 		fmt.Println("An error occurred")
 	}
 
-	one := comparison{FirstName: "First", LastName: "Last"}
-	two := comparison{FirstName: "First", LastName: "Last"}
-	if one == two {
+	one := comparison{FirstName: "First", LastName: "Last", MiddleNames: []string{"Middle"}}
+	two := comparison{FirstName: "First", LastName: "Last", MiddleNames: []string{"Middle"}}
+	// if one == two {
+	// 	fmt.Println("Matching")
+	// }
+	if one.Equals(two) {
 		fmt.Println("Matching")
 	}
+
+	// portfolio := map[comparison][]organization.Person{}
+	// portfolio[one] = []organization.Person{p}
+}
+
+type comparison struct {
+	FirstName   string
+	LastName    string
+	MiddleNames []string
+}
+
+func (c comparison) Equals(other comparison) bool {
+	return c.FirstName == other.FirstName &&
+		c.LastName == other.LastName &&
+		c.MiddleNames[0] == other.MiddleNames[0]
 }
