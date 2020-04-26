@@ -258,7 +258,7 @@ func conditionals() {
 }
 
 func complexTypes() {
-	p := organization.NewPerson(organization.NewEuropeanUnionIdentifier("123-45-6789", "Germany"), "Test", "Person")
+	p := organization.NewPerson(organization.NewEuropeanUnionIdentifier(123456789, "Germany"), "Test", "Person")
 	fmt.Printf("%T\n", organization.TwitterHandler("testing"))
 	err := p.SetTwitterHandler("@testy")
 	if err != nil {
@@ -276,6 +276,8 @@ func complexTypes() {
 
 	// portfolio := map[comparison][]organization.Person{}
 	// portfolio[one] = []organization.Person{p}
+
+	fmt.Println(p.ID())
 }
 
 type comparison struct {
