@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
+
+	"github.com/wills287/go-primer/organization"
 )
 
 const (
@@ -41,7 +43,8 @@ func main() {
 	// structs()
 	// functions()
 	// loops()
-	conditionals()
+	// conditionals()
+	complexTypes()
 }
 
 func variables() {
@@ -252,4 +255,15 @@ func conditionals() {
 	default:
 		fmt.Println("Unhandled")
 	}
+}
+
+func complexTypes() {
+	p := organization.NewPerson("Test", "Person")
+	fmt.Printf("%T\n", organization.TwitterHandler("testing"))
+	err := p.SetTwitterHandler("@testy")
+	if err != nil {
+		fmt.Println("An error occurred")
+	}
+	fmt.Println(p.ID(), p.FullName())
+	fmt.Println(p.TwitterHandler(), p.TwitterHandler().RedirectUrl())
 }
